@@ -7,5 +7,5 @@ Assert(0, Sum(0, 0));
 
 int Sum(int a, int b)
 {
-    throw new NotImplementedException();
+    return a + b;
 }
