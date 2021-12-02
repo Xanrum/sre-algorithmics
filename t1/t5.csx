@@ -2,7 +2,7 @@
 // Если таких значений несколько - найти первое такое значение
 #load "../tools.csx" 
  
-Assert(1, SearchMostFrequency(new () {-1, 0, 1, 1, 1, 3, 5, 5, 6, 7}));
+Assert(1, SearchMostFValue(new () {-1, 0, 1, 1, 1, 3, 5, 5, 6, 7}));
 
 int SearchMostFValue(List<int> listA)
 {
