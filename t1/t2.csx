@@ -8,18 +8,13 @@ Assert(-1, SearchMin(new () {6, 5, 4, 3, 0, -1})); // не ну а че, отс�
 
 int SearchMin(List<int> list)
 {
-    int length = -1;
-    foreach(int item in list) {
-        length++;
-    }
-
-    if (list[0] < list[length]) {
-        return list[0];
+    if (list.First() < list.Last()) {
+        return list.First();
     }
     else {
-        return list[length];
+        return list.Last();
     }
 
     // В случае, если отсортированный список считается только отсортированный всегда от меньшего к большему, то тупо:
-    // return list[0];
+    // return list.First();
 }

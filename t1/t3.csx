@@ -9,12 +9,7 @@ Assert(-1, BinarySearch(new () {0, 1, 2, 3, 4, 5, 6}, 10)); // поиск, ко�
 
 int BinarySearch(List<int> list, int value)
 {
-    int length = -1;
-    foreach(int item in list) {
-        length++;
-    }
-
-    int index = length / 2;
+    int index = list.Count() / 2;
 
     while (true) {
         if (list[index] == value) {
@@ -30,7 +25,7 @@ int BinarySearch(List<int> list, int value)
         }
 
         // дошли до начала или конца — и ничего не нашли :(
-        if (index == 0 || index == length) {
+        if (index == 0 || index == list.Count()) {
             return -1;
         }
     }
