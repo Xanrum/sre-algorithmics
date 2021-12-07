@@ -7,5 +7,5 @@ Assert(1000, SearchMin(new () {1000, 3000, 5000, 1000000}));
 
 int SearchMin(List<int> list)
 {
-    throw new NotImplementedException();
+    return list[0];
 }
