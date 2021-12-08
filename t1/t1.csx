@@ -5,7 +5,7 @@ Assert(3, Sum(1, 2));
 Assert(1, Sum(-1, 2));
 Assert(0, Sum(0, 0));
 
-int Sum(int a, int b)
-{
-    throw new NotImplementedException();
+int Sum(int a, int b) {
+    return a+b;
 }
+int SumFunc(int a, int b) => a + b;
