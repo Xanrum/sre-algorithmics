@@ -1,0 +1,14 @@
+using System;
+using Xunit;
+
+public class Lesson2Task3
+{
+    [Theory]
+    [InlineData(new[] { -1, 1, 1, 3, 5 }, new[] { 0, 1, 5, 6, 6, 6, 7 }, new[] { 1, 6 })]
+    private void CheckSearchMostFValue2(int[] listA, int[] listB, int[] expected) =>
+        Assert.Equal(expected, SearchMostFValue2(listA, listB));
+
+    // Даны два отсортириованный массива. Найти наиболее встречающееся значения в объединении двух массивов
+    // Результат - отсортированный массив значений
+    private int[] SearchMostFValue2(int[] listA, int[] listB) => throw new NotImplementedException();
+}
