@@ -13,5 +13,17 @@ public class Lesson1Task3
 
     // функция которая бинарным поиском ищет индекс элемента.
     // На входе отсортированная коллеция с уникальными значениями
-    private int BinarySearch(int[] list, int value) => throw new NotImplementedException();
+    private int BinarySearch(int[] list, int value)
+    {
+        var leftBound = 0;
+        var rightBound = list.Length - 1;
+        while (true)
+        {
+            var center = leftBound + (rightBound - leftBound) / 2;
+            var centerValue = list[center];
+            if (centerValue == value) return center;
+            if (centerValue < value) leftBound = center + 1;
+            if (centerValue > value) rightBound = center;
+        }
+    }
 }
