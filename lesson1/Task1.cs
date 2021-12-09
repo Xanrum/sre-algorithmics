@@ -9,5 +9,5 @@ public class Lesson1Task1
     private void CheckSum(int a, int b, int expected) => Assert.Equal(expected, Sum(a, b));
 
     //функция складывает два целых числа
-    private int Sum(int a, int b) => throw new NotImplementedException();
+    private int Sum(int a, int b) => a + b;
 }
