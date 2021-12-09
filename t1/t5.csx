@@ -3,6 +3,7 @@
 #load "../tools.csx" 
  
 Assert(1, SearchMostFValue(new () {-1, 0, 1, 1, 1, 3, 5, 5, 6, 7}));
+Assert(2, SearchMostFValue(new () {1, 2, 2, 3}));
 
 int SearchMostFValue(List<int> listA)
 {
@@ -12,8 +13,8 @@ int SearchMostFValue(List<int> listA)
     var tempMaxN = listA[0];
     foreach(var item in listA)
     {
-        if(item == tempMaxN) tempMaxV++;
-        else {
+        if(item != tempMaxN)
+        {
             if(tempMaxV>globMaxV)
             {
                 globMaxV=tempMaxV;
@@ -23,6 +24,7 @@ int SearchMostFValue(List<int> listA)
             tempMaxN = item;
             tempMaxV = 1;
         }
+        tempMaxV++;
     }
     return globMaxN;
 }
