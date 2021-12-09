@@ -9,24 +9,40 @@ Assert(-1, BinarySearch(new () {0, 1, 2, 3, 4, 5, 6}, 10)); // поиск, ко�
 
 int BinarySearch(List<int> list, int value)
 {
-    int index = list.Count() / 2;
+    int start = 0;
+    int end = list.Count - 1;
+    int position;
 
-    while (true) {
-        if (list[index] == value) {
-            return index;
+    do {
+        position = start + (end - start) / 2;
+
+        if (list[position] == value) {
+            return position;
         }
         else {
-            if (list[index] < value) {
-                index++;
+            if (list[position] < value) {
+                start = position;
             }
             else {
-                index--;
+                end = position;
             }
         }
+    } while (end - start > 1);
 
-        // дошли до начала или конца — и ничего не нашли :(
-        if (index == 0 || index == list.Count()) {
-            return -1;
-        }
-    }
+    // Максимально упоротый вариант цикла for вместо do while
+    //for (int start = 0, end = list.Count - 1, position = start + (end - start) / 2; end - start > 1; position = start + (end - start) / 2) {
+    //    if (list[position] == value) {
+    //        return position;
+    //    }
+    //    else {
+    //        if (list[position] < value) {
+    //            start = position;
+    //        }
+    //        else {
+    //            end = position;
+    //        }
+    //    }
+    //}
+
+    return -1; // везде поискали и ничего не нашли :(
 }
