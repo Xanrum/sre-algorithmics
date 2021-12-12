@@ -4,27 +4,33 @@
 
 Assert(1, SearchMostFValue(new () {-1, 0, 1, 1, 1, 3, 5, 5, 6, 7}));
 Assert(3, SearchMostFValue(new () {1, 1, 3, 3, 3, 5, 5, 5, 6})); // 3 и 5 встречаются по три раза — берем первое
+Assert(10, SearchMostFValue(new () {10})); // и такое бывает
 
 int SearchMostFValue(List<int> listA)
 {
-    Dictionary<int, int> repeat = new Dictionary<int, int>();
+    int count = 0;
+    int value = 0;
+    int fCount = 0;
+    int fValue = 0;
 
-    for (int i = 0; i < listA.Count(); i++) {
-        if (repeat.ContainsKey(listA[i])) {
-            if (listA[i] == listA[i-1]) {
-                repeat[listA[i]] += 1;
-            }
+    foreach (int item in listA) {
+        if (count == 0) {
+            value = item;
         }
         else {
-            repeat[listA[i]] = 1;
+            if (value != item) {
+                if (fCount < count) {
+                    fCount = count;
+                    fValue = value;
+                }
+
+                value = item;
+                count = 0;
+            }
         }
+        count++;
+
     }
 
-    foreach(KeyValuePair<int, int> item in repeat) {
-        if (item.Value == repeat.Values.Max()) {
-            return item.Key;
-        }
-    }
-
-    return -1;
+    return listA.Count == 1 ? listA[0] : fValue;
 }
