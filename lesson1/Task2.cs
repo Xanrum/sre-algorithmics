@@ -10,5 +10,5 @@ public class Lesson1Task2
     private void CheckSearchMin(int[] list, int expected) => Assert.Equal(expected, SearchMin(list));
 
     // функция находящая минимальное значение в отсортированном листе
-    private int SearchMin(int[] list) => throw new NotImplementedException();
+    private int SearchMin(int[] list) => list[1];
 }
