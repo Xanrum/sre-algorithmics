@@ -3,6 +3,7 @@ using Xunit;
 
 public class Lesson1Task1
 {
+    // O(1)
     [Theory]
     [InlineData(1, 2, 3)]
     [InlineData(1, -2, -1)]

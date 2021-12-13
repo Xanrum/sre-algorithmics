@@ -5,6 +5,7 @@ using Xunit;
 
 public class Lesson1Task4
 {
+    // O(n)
     [Theory]
     [InlineData(new[] { 0, 1, 1, 5, 6 }, new[] { -1, 1, 3, 5, 7 }, new[] { -1, 0, 1, 1, 1, 3, 5, 5, 6, 7 })]
     [InlineData(new[] { 0, 1, 1, 5, 6, 7, 8, 8, 9 }, new[] { -1, 1, 3, 5, 7 }, new[] { -1, 0, 1, 1, 1, 3, 5, 5, 6, 7, 7, 8, 8, 9 })]
@@ -45,11 +46,9 @@ public class Lesson1Task4
                 } 
                 break;
             }
-
-
+            
             if (listA[i] <= listB[j])
             {
-                Console.WriteLine(listA[i]);
                 result[k]=listA[i];
                 k++;
                 i++;
@@ -57,11 +56,9 @@ public class Lesson1Task4
             }
             if (listA[i] > listB[j])
             {
-                Console.WriteLine(listB[j]);
                 result[k]=listB[j];
                 k++;
                 j++;
-                continue;
             }
         }
 

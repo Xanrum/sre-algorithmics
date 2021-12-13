@@ -3,6 +3,7 @@ using Xunit;
 
 public class Lesson1Task3
 {
+    // O(log n)
     [Theory]
     [InlineData(new[] { 0, 1, 2, 3, 4, 5, 6 }, 2, 2)]
     [InlineData(new[] { 0, 2, 3, 5, 6, 100 }, 5, 3)]

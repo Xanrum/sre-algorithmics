@@ -3,6 +3,7 @@ using Xunit;
 
 public class Lesson1Task5
 {
+    // O(n)
     [Theory]
     [InlineData(new[] {-1, 0, 1, 1, 1, 3, 5, 5, 6, 7}, 1)]
     [InlineData(new[] {1, 2, 2}, 2)]
