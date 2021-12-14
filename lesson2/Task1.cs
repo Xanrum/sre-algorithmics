@@ -7,10 +7,27 @@ public class Lesson2Task1
     [InlineData("(", false)]
     [InlineData("()", true)]
     [InlineData("())", false)]
-    private void CheckSearchMostFValue(string input, bool expected) =>
-        Assert.Equal(expected, CheckBracers(input));
+    [InlineData("((", false)]
+    [InlineData("()()", true)]
+    [InlineData("((()))", true)]
+    private void CheckCheckBraces(string input, bool expected) =>
+        Assert.Equal(expected, CheckBraces(input));
 
-    // Дана строка со скобочным выражением состоящая из круглых скобок
-    // требуется определить корректность этой строки
-    private bool CheckBracers(string input) => throw new NotImplementedException();
+    // Дана строка со скобочным выражением состоящая из круглых скобок.
+    // Требуется определить корректность этой строки.
+    private bool CheckBraces(string input) {
+        int countBraceLeft = 0;
+        int countBraceRight = 0;
+
+        foreach(char brace in input) {
+            if (brace == '(') {
+                countBraceLeft++;
+            }
+            else {
+                countBraceRight++;
+            }
+        }
+
+        return (countBraceLeft == countBraceRight) ? true : false;
+    }
 }
