@@ -9,7 +9,7 @@ public class Lesson1Task5
     [InlineData(new[] { 10 }, 10)] // и такое бывает
     private void CheckSearchMostFValue(int[] list, int expected) => Assert.Equal(expected, SearchMostFValue(list));
 
-    // Дан отсортириованный массив. Найти наиболее встречающееся значение.
+    // Дан отсортированный массив. Найти наиболее встречающееся значение.
     // Если таких значений несколько — найти первое такое значение.
     private int SearchMostFValue(int[] list) {
         int count = 0;
@@ -21,16 +21,15 @@ public class Lesson1Task5
             if (count == 0) {
                 value = item;
             }
-            else {
-                if (value != item) {
-                    if (fCount < count) {
-                        fCount = count;
-                        fValue = value;
-                    }
 
-                    value = item;
-                    count = 0;
+            if (value != item) {
+                if (fCount < count) {
+                    fCount = count;
+                    fValue = value;
                 }
+
+                value = item;
+                count = 0;
             }
 
             count++;
