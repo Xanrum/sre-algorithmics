@@ -11,6 +11,7 @@ public class Lesson2Task3
 
     // Даны два отсортириованных массива. Найти наиболее встречающиеся значения в объединении двух массивов.
     // Результат - отсортированный массив значений.
+    // O( (a+b)^c )
     private int[] SearchMostFValue2(int[] listA, int[] listB) {
         List<int> list = new List<int>();
         Dictionary<int, int> dict = new Dictionary<int, int>();

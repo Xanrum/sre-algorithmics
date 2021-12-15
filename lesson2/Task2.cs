@@ -14,6 +14,7 @@ public class Lesson2Task2
 
     // Дан массив состоящий только из 0 и 1.
     // Требуется отсортировать его.
+    // O(n)
     private int[] BinarySort(int[] list) {
         int[] sortedList = new int[list.Length];
         int left = 0;

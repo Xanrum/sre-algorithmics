@@ -10,6 +10,7 @@ public class Lesson1Task4
         Assert.Equal(expected, Merge(listA, listB));
 
     // Есть два отсортированных массива. Надо их смержить в новый отсортированный массив.
+    // O(n^2)
     private int[] Merge(int[] listA, int[] listB) {
         int[] listC = new int[listA.Length + listB.Length];
         int indexA = 0;

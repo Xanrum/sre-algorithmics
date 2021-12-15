@@ -15,6 +15,7 @@ public class Lesson2Task1
 
     // Дана строка со скобочным выражением состоящая из круглых скобок.
     // Требуется определить корректность этой строки.
+    // O(n)
     private bool CheckBraces(string input) {
         int countBraceLeft = 0;
         int countBraceRight = 0;

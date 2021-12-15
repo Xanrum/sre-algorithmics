@@ -11,6 +11,7 @@ public class Lesson1Task5
 
     // Дан отсортированный массив. Найти наиболее встречающееся значение.
     // Если таких значений несколько — найти первое такое значение.
+    // O(n)
     private int SearchMostFValue(int[] list) {
         int count = 0;
         int value = 0;
