@@ -9,6 +9,9 @@ public class Lesson1Task2
     [InlineData(new[] { 1000, 3000, 5000, 1000000 }, 1000)]
     private void CheckSearchMin(int[] list, int expected) => Assert.Equal(expected, SearchMin(list));
 
+    //Асимптотика
+    //Вычислительная О(1)
+    //Память О(1)
     // функция находящая минимальное значение в отсортированном листе
     private int SearchMin(int[] list) => list[0];
 }

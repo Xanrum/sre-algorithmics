@@ -10,6 +10,9 @@ public class Lesson1Task3
     private void CheckBinarySearch(int[] list, int value, int expected) =>
         Assert.Equal(expected, BinarySearch(list, value));
 
+    //Асимптотика
+    //Вычислительная О(log(2)N)
+    //Память О(1)
     // функция которая бинарным поиском ищет индекс элемента.
     // На входе отсортированная коллеция с уникальными значениями
     private int BinarySearch(int[] list, int value)
