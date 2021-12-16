@@ -5,6 +5,7 @@ public class Lesson1Task4
 {
     [Theory]
     [InlineData(new[] { 0, 1, 1, 5, 6 }, new[] { -1, 1, 3, 5, 7 }, new[] { -1, 0, 1, 1, 1, 3, 5, 5, 6, 7 })]
+    [InlineData(new[] { 0 }, new[] { 0 }, new[] { 0, 0 })]
     [InlineData(new[] { 0 }, new[] { 1 }, new[] { 0, 1 })]
     private void CheckSearchMin(int[] listA, int[] listB, int[] expected) =>
         Assert.Equal(expected, Merge(listA, listB));
@@ -21,7 +22,7 @@ public class Lesson1Task4
         var c = 0;
         while (i1 != listA.Length || i2 != listB.Length)
         {
-            if (i1 != listA.Length && listA[i1] < listB[i2])
+            if (i2 == listB.Length || i1 != listA.Length && listA[i1] < listB[i2])
             {
                 result[c] = listA[i1];
                 i1++;
