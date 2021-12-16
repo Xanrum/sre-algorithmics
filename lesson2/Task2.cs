@@ -20,7 +20,7 @@ public class Lesson2Task2
     {
         var zeroCount = 0;
         foreach (var i in list)
-            if (i == 1)
+            if (i == 0)
                 zeroCount++;
         var result = new int[list.Length];
         for (int i = zeroCount; i < result.Length; i++) result[i] = 1;
