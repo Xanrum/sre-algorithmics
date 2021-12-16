@@ -6,6 +6,8 @@ public class Lesson2Task1
     [Theory]
     [InlineData("(", false)]
     [InlineData("()", true)]
+    [InlineData(")(", true)]
+    [InlineData("())(", true)]
     [InlineData("())", false)]
     private void CheckSearchMostFValue(string input, bool expected) =>
         Assert.Equal(expected, CheckBracers(input));
