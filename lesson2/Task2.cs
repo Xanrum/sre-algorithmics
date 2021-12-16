@@ -22,7 +22,6 @@ public class Lesson2Task2
 
         foreach (int item in list) {
             if (item == 0) {
-                sortedList[left] = 0;
                 left++;
             }
             else {
