@@ -9,6 +9,9 @@ public class Lesson1Task4
     private void CheckSearchMin(int[] listA, int[] listB, int[] expected) =>
         Assert.Equal(expected, Merge(listA, listB));
 
+    //Асимптотика
+    //Вычислительная О(N+M)
+    //Память О(N+M)
     // Есть два отсортированных листа. Надо их смержить в новый отсортированный лист
     private int[] Merge(int[] listA, int[] listB)
     {
