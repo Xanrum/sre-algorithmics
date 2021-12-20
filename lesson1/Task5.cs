@@ -6,6 +6,8 @@ public class Lesson1Task5
     // O(n)
     [Theory]
     [InlineData(new[] { -1, 0, 1, 1, 1, 3, 5, 5, 6, 7 }, 1)]
+    [InlineData(new[] { -1, 0, 1, 1, 1, 3, 5, 5, 5, 5, 6, 7 }, 5)]
+    [InlineData(new[] { -1, 0, 1, 1, 1, 1, 3, 5, 5, 5, 5, 6, 7 }, 1)]
     [InlineData(new[] { 0, 1, 1 }, 1)]
     [InlineData(new[] { 1 }, 1)]
     [InlineData(new[] {1, 2, 2}, 2)]
@@ -26,10 +28,10 @@ public class Lesson1Task5
                 if (counter <= resultFrequency) 
                     continue;
                 resultFrequency = counter;
-                result = list[i];
+                result = list[i - 1];
             }
             else
-                counter = 0;
+                counter = 1;
         }
 
         Console.WriteLine(result);
