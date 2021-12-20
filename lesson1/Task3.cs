@@ -22,9 +22,7 @@ public class Lesson1Task3
         while(firstIndex <= lastIndex)
         {
             var middleIndex = (lastIndex + firstIndex) / 2;
-            Console.WriteLine($"middleIndex = {middleIndex}");
             var middleValue = list[middleIndex];
-            Console.WriteLine($"middleValue = {middleValue}");
             if (middleValue == value)
                 return middleIndex;
             if (value < middleValue)
