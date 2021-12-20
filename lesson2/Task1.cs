@@ -8,9 +8,13 @@ public class Lesson2Task1
     [InlineData("()", true)]
     [InlineData("())", false)]
     [InlineData("((", false)]
+    [InlineData(")", false)]
+    [InlineData("))", false)]
     [InlineData("()()", true)]
     [InlineData("((()))", true)]
     [InlineData(")(", false)]
+    [InlineData("())(", false)]
+    [InlineData("())(()", false)]
     [InlineData("(()((())))", true)]
     private void CheckCheckBraces(string input, bool expected) =>
         Assert.Equal(expected, CheckBraces(input));
@@ -20,24 +24,20 @@ public class Lesson2Task1
     // O(n)
     private bool CheckBraces(string input) {
         int count = 0;
-        int countBraceLeft = 0;
-        int countBraceRight = 0;
 
-        foreach(char brace in input) {
-            if (count == 0 && brace == ')') {
-                return false;
-            }
-
+        foreach (char brace in input) {
             if (brace == '(') {
-                countBraceLeft++;
+                count++;
             }
             else {
-                countBraceRight++;
+                count--;
             }
 
-            count++;
+            if (count < 0) {
+                return false;
+            }
         }
 
-        return (countBraceLeft == countBraceRight) ? true : false;
+        return count == 0 ? true : false;
     }
 }
