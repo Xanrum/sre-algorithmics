@@ -11,5 +11,26 @@ public class Lesson3Task3
 
     // Дана строка из латинских заглавных букв.
     // Необходимо заменить все повторы одинаковых подряд идущих букв на букву + цифру 
-    private string RLE(string input) => throw new NotImplementedException();
+    private string RLE(string input)
+    {
+        var result = "";
+
+        void addToRes(char c, int count)
+            => result += c + (count == 1 ? "" : count.ToString());
+
+        var count = 1;
+        var prev = input[0];
+        for (var i = 1; i < input.Length; i++)
+        {
+            if (prev != input[i])
+            {
+                addToRes(prev, count);
+                count = 0;
+                prev = input[i];
+            }
+            count++;
+        }
+        addToRes(prev, count);
+        return result;
+    }
 }
