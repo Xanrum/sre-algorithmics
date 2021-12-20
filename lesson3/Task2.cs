@@ -14,6 +14,15 @@ public class Lesson3Task2
     {
         var result = 0;
         var current = 0;
-        return 0;
+        foreach (var ch in input)
+        {
+            if (char.IsDigit(ch)) current = current * 10 + ch - '0';
+            else
+            {
+                result += current;
+                current = 0;
+            }
+        }
+        return result + current;
     }
 }
