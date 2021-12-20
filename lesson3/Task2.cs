@@ -10,5 +10,10 @@ public class Lesson3Task2
 
     // Дано корректное арифметическое выражение состоящее только из цифр и знаков плюс +
     // Требуется произвести вычисление значения выражения
-    private int Sumator(string input) => throw new NotImplementedException();
+    private int Sumator(string input)
+    {
+        var result = 0;
+        var current = 0;
+        return 0;
+    }
 }
