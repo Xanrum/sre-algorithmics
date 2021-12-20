@@ -6,6 +6,7 @@ public class Lesson2Task1
     // O(n)
     [Theory]
     [InlineData("(", false)]
+    [InlineData("((", false)]
     [InlineData("()", true)]
     [InlineData(")(", false)]
     [InlineData("())(", false)]
