@@ -15,9 +15,9 @@ public class Lesson1Task5
     // Если таких значений несколько - найти первое такое значение
     private int SearchMostFValue(int[] list)
     {
-        var result = 0;
-        var resultFrequency = 0;
-        var counter = 0;
+        var resultFrequency = 1;
+        var counter = 1;
+        var result = list[0];
         for (var i = 1; i < list.Length; i++)
         {
             if (list[i] == list[i - 1])
