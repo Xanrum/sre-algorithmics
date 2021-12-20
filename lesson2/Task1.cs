@@ -5,6 +5,7 @@ public class Lesson2Task1
 {
     [Theory]
     [InlineData("(", false)]
+    [InlineData("((", false)]
     [InlineData("()", true)]
     [InlineData(")(", false)]
     [InlineData("())(", false)]
