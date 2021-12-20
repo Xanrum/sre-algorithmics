@@ -3,7 +3,7 @@ using Xunit;
 
 public class Lesson2Task1
 {
-    // O(n)
+    // O(n) - по времени, О(1) - по памяти
     [Theory]
     [InlineData("(", false)]
     [InlineData("((", false)]
@@ -24,21 +24,19 @@ public class Lesson2Task1
     // требуется определить корректность этой строки
     private bool CheckBracers(string input)
     {
-        if (input.Length % 2 == 1) return false;
-        var countOpen = 0;
+        var count = 0;
         foreach (var t in input)
         {
             if (t == '(')
-                countOpen++;
+                count++;
             else
             {
-                if (countOpen > 0)
-                    countOpen--;
+                if (count > 0)
+                    count--;
                 else
                     return false;
             }
         }
-
-        return countOpen == 0;
+        return count == 0;
     }
 }
