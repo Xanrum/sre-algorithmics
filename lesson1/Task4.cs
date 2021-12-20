@@ -5,7 +5,7 @@ using Xunit;
 
 public class Lesson1Task4
 {
-    // O(n)
+    // O(n) - по вермени, O(n) - по памяти. Считается же только доп память? 
     [Theory]
     [InlineData(new[] { 0, 1, 1, 5, 6 }, new[] { -1, 1, 3, 5, 7 }, new[] { -1, 0, 1, 1, 1, 3, 5, 5, 6, 7 })]
     [InlineData(new[] { 0 }, new[] { 1 }, new[] { 0, 1 })]
