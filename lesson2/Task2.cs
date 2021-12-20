@@ -17,16 +17,12 @@ public class Lesson2Task2
     // O(n)
     private int[] BinarySort(int[] list) {
         int[] sortedList = new int[list.Length];
-        int left = 0;
-        int right = sortedList.Length-1;
+        int index = sortedList.Length-1;
 
         foreach (int item in list) {
-            if (item == 0) {
-                left++;
-            }
-            else {
-                sortedList[right] = 1;
-                right--;
+            if (item != 0) {
+                sortedList[index] = 1;
+                index--;
             }
         }
 
