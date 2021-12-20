@@ -7,6 +7,7 @@ public class Lesson2Task1
     [Theory]
     [InlineData("(", false)]
     [InlineData("((", false)]
+    [InlineData("))", false)]
     [InlineData("()", true)]
     [InlineData(")(", false)]
     [InlineData("())(", false)]
@@ -37,6 +38,7 @@ public class Lesson2Task1
                     return false;
             }
         }
-        return true;
+
+        return countOpen == 0;
     }
 }
