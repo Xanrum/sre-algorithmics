@@ -3,11 +3,11 @@ using Xunit;
 
 public class Lesson3Task2
 {
-    // только из цифр? Не из чисел?
     // O(n) - по времени, O(1) - по памяти
     [Theory]
     [InlineData("1+2", 3)]
-    [InlineData("1+2+1+3+9+5+4", 25)]
+    [InlineData("1+21+3+94", 119)]
+    [InlineData("1111+21+3+4+", 1139)] // все как на маковском калькуляторе, да
     private void CheckSumator(string input, int expected) =>
         Assert.Equal(expected, Sumator(input));
 
@@ -16,11 +16,22 @@ public class Lesson3Task2
     private int Sumator(string input)
     {
         var result = 0;
-        foreach (var symbol in input)
+        var startIndex = 0;
+        var count = 0;
+        for (int i = 0; i < input.Length; i++)
         {
-            if (symbol != '+')
-                result += Convert.ToInt32(char.GetNumericValue(symbol));
+            if (input[i] != '+')
+                count++;
+            else
+            {
+                result += int.Parse(input.AsSpan().Slice(startIndex, count));
+                startIndex = i + 1;
+                count = 0;
+            }
         }
+
+        if (count != 0)
+            result += int.Parse(input.AsSpan().Slice(startIndex, count));
 
         return result;
     }
