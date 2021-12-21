@@ -4,6 +4,7 @@ using Xunit;
 public class Lesson3Task2
 {
     // O(n) - по времени, O(1) - по памяти
+    // .AsSpan() не требует выделения памяти? Вот тут довольно странный пример https://docs.microsoft.com/en-us/archive/msdn-magazine/2018/january/csharp-all-about-span-exploring-a-new-net-mainstay#what-is-spant
     [Theory]
     [InlineData("1+2", 3)]
     [InlineData("1+21+3+94", 119)]
@@ -24,14 +25,14 @@ public class Lesson3Task2
                 count++;
             else
             {
-                result += int.Parse(input.AsSpan().Slice(startIndex, count));
+                result += int.Parse(input.AsSpan(startIndex, count));
                 startIndex = i + 1;
                 count = 0;
             }
         }
 
         if (count != 0)
-            result += int.Parse(input.AsSpan().Slice(startIndex, count));
+            result += int.Parse(input.AsSpan(startIndex, count));
 
         return result;
     }
