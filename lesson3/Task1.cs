@@ -7,6 +7,7 @@ public class Lesson3Task1
     [Theory]
     [InlineData("(", false)]
     [InlineData("()", true)]
+    [InlineData("()))", false)]
     [InlineData("(]", false)]
     [InlineData("({)", false)]
     private void CheckSearchMostFValue(string input, bool expected) =>
