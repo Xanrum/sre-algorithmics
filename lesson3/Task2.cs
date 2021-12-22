@@ -11,6 +11,7 @@ public class Lesson3Task2
     [InlineData("+123+257+23", 403)]
     [InlineData("257", 257)]
     [InlineData("+257", 257)]
+    [InlineData("1+20", 21)]
     private void CheckSumator(string input, int expected) =>
         Assert.Equal(expected, Sumator(input));
 
