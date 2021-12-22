@@ -6,6 +6,7 @@ public class Lesson3Task1
     [Theory]
     [InlineData("(", false)]
     [InlineData("()", true)]
+    [InlineData("()))", false)]
     [InlineData("(]", false)]
     [InlineData("({)", false)]
     [InlineData("({)}", false)]
@@ -29,32 +30,18 @@ public class Lesson3Task1
             return false;
         }
 
-        // начало и конец выражения
-        if (
-            input[0] == ')' ||
-            input[0] == ']' ||
-            input[0] == '}' ||
-            input[input.Length-1] == '(' ||
-            input[input.Length-1] == '[' ||
-            input[input.Length-1] == '{' ) {
-                return false;
+        do {
+            int length = input.Length;
+
+            input = input.Replace("()", "");
+            input = input.Replace("[]", "");
+            input = input.Replace("{}", "");
+
+            if (length == input.Length) {
+                break;
             }
+        } while (true);
 
-        // все признаки неверного выражения
-        for (int i = 0; i < input.Length-1; i++) {
-            string pair = input[i].ToString() + input[i+1].ToString();
-
-            if (
-                pair == "(}" ||
-                pair == "(]" ||
-                pair == "{)" ||
-                pair == "{]" ||
-                pair == "[)" ||
-                pair == "[}" ) {
-                    return false;
-            }
-        }
-
-        return true;
+        return (input.Length == 0) ? true : false;
     }
 }
