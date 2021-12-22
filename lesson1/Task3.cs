@@ -8,10 +8,40 @@ public class Lesson1Task3
     [InlineData(new[] { 0, 2, 3, 5, 6, 100 }, 5, 3)]
     [InlineData(new[] { 3, 4, 5, 6, 8, 100, 200, 1000, 3000, 5000, 1000000 }, 5000, 9)]
     [InlineData(new[] { 3, 4, 5, 6, 8, 100, 200, 1000, 3000, 5000 }, 5000, 9)]
+    [InlineData(new[] { 3, 4, 5, 6, 8, 100, 200, 1000, 3000, 5000, 1000000 }, 3, 0)]
+    [InlineData(new[] { 0, 1, 2, 3, 4, 5, 6 }, 10, -1)] // поиск, который ничего не найдет
     private void CheckBinarySearch(int[] list, int value, int expected) =>
         Assert.Equal(expected, BinarySearch(list, value));
 
-    // функция которая бинарным поиском ищет индекс элемента.
-    // На входе отсортированная коллеция с уникальными значениями
-    private int BinarySearch(int[] list, int value) => throw new NotImplementedException();
+    // Функция, которая бинарным поиском ищет индекс элемента.
+    // На входе отсортированная коллеция с уникальными значениями.
+    private int BinarySearch(int[] list, int value) {
+        int start = 0;
+        int end = list.Length - 1;
+        int position;
+
+        do {
+            position = start + (end - start) / 2;
+
+            if (list[position] == value) {
+                return position;
+            }
+            else {
+                if (list[position] < value) {
+                    start = position;
+                }
+                else {
+                    end = position;
+                }
+            }
+        } while (end - start > 1);
+
+        if (list[start+1] == value)
+            return start+1;
+
+        if (list[end-1] == value)
+            return end-1;
+
+        return -1; // везде поискали и ничего не нашли :(
+    }
 }
