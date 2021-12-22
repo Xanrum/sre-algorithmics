@@ -20,21 +20,22 @@ public class Lesson3Task2
     // O(N)
     private int Sumator(string input)
     {
-        var plusIndexes = new List<int> {0};
+        var plusPos = 0;
         var sum = 0;
         for (var i = 0; i < input.Length; i++)
         {
             if (i == 0 && input[i] == '+')
             {
-                plusIndexes.Add(1);
+                plusPos = 1;
                 continue;
             }
 
             if (input[i] != '+') continue;
-            plusIndexes.Add(i);
-            sum+=int.Parse(input[plusIndexes[^2]..i]);
+            sum += int.Parse(input[plusPos..i]);
+            plusPos = i;
         }
-        sum+=int.Parse(input[plusIndexes[^1]..]);
+
+        sum += int.Parse(input[plusPos..]);
         return sum;
     }
 }
