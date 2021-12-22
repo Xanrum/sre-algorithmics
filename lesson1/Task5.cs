@@ -19,6 +19,10 @@ public class Lesson1Task5
         int fCount = 0;
         int fValue = 0;
 
+        if (list.Length == 1) {
+            return list[0];
+        }
+
         foreach (int item in list) {
             if (count == 0) {
                 value = item;
@@ -38,6 +42,6 @@ public class Lesson1Task5
             count++;
         }
 
-        return list.Length == 1 ? list[0] : fValue;
+        return (count > value) ? value : fValue;
     }
 }
