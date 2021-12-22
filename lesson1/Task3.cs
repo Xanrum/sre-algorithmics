@@ -15,6 +15,7 @@ public class Lesson1Task3
 
     // Функция, которая бинарным поиском ищет индекс элемента.
     // На входе отсортированная коллеция с уникальными значениями.
+    // O(log n)
     private int BinarySearch(int[] list, int value) {
         int start = 0;
         int end = list.Length - 1;
