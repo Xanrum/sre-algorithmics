@@ -10,13 +10,10 @@ public class Lesson2Task1
     [InlineData(")(", false)]
     [InlineData("())(", false)]
     [InlineData("())", false)]
-    [InlineData("((", false)]
     [InlineData(")", false)]
     [InlineData("))", false)]
     [InlineData("()()", true)]
     [InlineData("((()))", true)]
-    [InlineData(")(", false)]
-    [InlineData("())(", false)]
     [InlineData("())(()", false)]
     [InlineData("(()((())))", true)]
     private void CheckCheckBraces(string input, bool expected) =>
