@@ -12,5 +12,7 @@ public class Lesson2Task3
 
     // Даны два отсортириованный массива. Найти наиболее встречающееся значения в объединении двух массивов
     // Результат - отсортированный массив значений
+    //o(N)
     private int[] SearchMostFValue2(int[] listA, int[] listB) => throw new NotImplementedException();
+    // Мучаюсь над однопроходнм решением
 }

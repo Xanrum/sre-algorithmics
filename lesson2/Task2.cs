@@ -13,5 +13,19 @@ public class Lesson2Task2
 
     // Дан массив состоящий только из 0 и 1
     // Требуется отсортировать его
-    private int[] BinarySort(int[] list) => throw new NotImplementedException();
+    //O(N)
+    private int[] BinarySort(int[] list)
+    {
+        var c = 0;
+        foreach (var item in list)
+        {
+            if (item == 1) c++;
+        }
+        var res = new int[list.Length];
+        for (int i = list.Length - c; i < res.Length; i++)
+        {
+            res[i] = 1;
+        }
+        return res;
+    }
 }
