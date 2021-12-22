@@ -5,7 +5,6 @@ public class Lesson1Task5
 {
     [Theory]
     [InlineData(new[] { -1, 0, 1, 1, 1, 3, 5, 5, 6, 7 }, 1)]
-    [InlineData(new[] { 0, 1, 1 }, 1)]
     [InlineData(new[] { 1 }, 1)]
     [InlineData(new[] { 1, 1, 3, 3, 3, 5, 5, 5, 6 }, 3)] // 3 и 5 встречаются по три раза — берем первое
     [InlineData(new[] { 10 }, 10)] // и такое бывает
