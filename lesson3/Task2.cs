@@ -5,6 +5,7 @@ public class Lesson3Task2
 {
     [Theory]
     [InlineData("1+2", 3)]
+    [InlineData("1+20", 21)]
     [InlineData("0+0", 0)]
     [InlineData("1+2+3", 6)]
     private void CheckSumator(string input, int expected) =>
@@ -14,13 +15,19 @@ public class Lesson3Task2
     // Требуется произвести вычисление значения выражения.
     private int Sumator(string input) {
         int sum = 0;
+        string numbers = "";
 
         foreach (char item in input) {
             if (item != '+') {
-                int number = (int)Char.GetNumericValue(item);
-                sum = sum + number;
+                numbers = numbers + item.ToString();
+                continue;
             }
+
+            sum = sum + Int32.Parse(numbers);
+            numbers = "";
         }
+
+        sum = sum + Int32.Parse(numbers);
 
         return sum;
     }
