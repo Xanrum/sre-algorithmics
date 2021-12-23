@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 public class Lesson3Task1
@@ -9,6 +10,10 @@ public class Lesson3Task1
     [InlineData("()))", false)]
     [InlineData("(]", false)]
     [InlineData("({)", false)]
+    [InlineData("([)]", false)]
+    [InlineData("))", false)]
+    [InlineData(")(", false)]
+    [InlineData("())(", false)]
     private void CheckSearchMostFValue(string input, bool expected) =>
         Assert.Equal(expected, CheckBracers(input));
 
@@ -16,18 +21,34 @@ public class Lesson3Task1
     // требуется определить корректность этой строки
     private bool CheckBracers(string input)
     {
-        var (cR, cF, cP) = (0, 0, 0);
+        var st = new List<char>();
         foreach (var item in input)
         {
-            if (item == '(') cR++;
-            if (item == ')') cR--;
-            if (item == '{') cF++;
-            if (item == '}') cF--;
-            if (item == '[') cP++;
-            if (item == ']') cP--;
-            if (cR < 0 || cF < 0 || cP < 0) return false;
+            if (item == '(') st.Add(item);
+            if (item == '{') st.Add(item);
+            if (item == '[') st.Add(item);
+            if (item == ')')
+            {
+                if (st.Count == 0) return false;
+                if (st[^1] == '(') st.RemoveAt(st.Count - 1);
+                else return false;
+            }
+
+            if (item == '}')
+            {
+                if (st.Count == 0) return false;
+                if (st[^1] == '{') st.RemoveAt(st.Count - 1);
+                else return false;
+            }
+
+            if (item == ']')
+            {
+                if (st.Count == 0) return false;
+                if (st[^1] == '[') st.RemoveAt(st.Count - 1);
+                else return false;
+            }
         }
 
-        return cR == 0 && cF == 0 && cP == 0;
+        return st.Count == 0;
     }
 }
