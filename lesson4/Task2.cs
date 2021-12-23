@@ -1,16 +1,16 @@
 using System;
+using System.Linq;
 using Xunit;
 
-public class Lesson4Task4
+public class Lesson4Task2
 {
     [Theory]
-    [InlineData(new []{0, 1, 2, 3, 4}, 4, "0,4;1,3")]
-    
-    private void CheckSFindSum(int[] input, int k, string expected) =>
-        Assert.Equal(expected, FindSum(input, k));
+    [InlineData(2, new[] {"(())", "()()"})]
+    private void CheckBracersGenerator(int input, string[] expected) =>
+        Assert.Equal(expected, BracersGenerator(input).OrderBy(p => p));
 
-    // Дан отсортированный массив и число K
-    // требуется найти два индекса по которым сумма значений равна К
-    // вывести в виде массива массивов из двух значений - в значениях два индкеса, сначала идет меньший индексы
-    private string FindSum(int[] input, int k) => throw new NotImplementedException();
+    // Дано число N
+    // надо сгенериировать все возможные правильные скобочные выражения длиной N символов
+    // скобочные выражения состоят только из круглых скобок
+    private string[] BracersGenerator(int input) => throw new NotImplementedException();
 }

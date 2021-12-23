@@ -4,15 +4,13 @@ using Xunit;
 public class Lesson4Task1
 {
     [Theory]
-    [InlineData("2+2*2", 6)]
-    private void CheckEvaluator(string input, int expected) =>
-        Assert.Equal(expected, Evaluator(input));
+    [InlineData(new [] {1, 2, 3, 4}, new[] {4, 3, 2, 1})]
+    private void CheckEvaluator(int[] input, int[] expected)
+    {
+        ReverseArray(input);
+        Assert.Equal(expected, input);
+    }
 
-    // Дана строка состоящая из
-    // * знаков умножения
-    // + знаков плюс
-    // цифр 0..9
-    // строка представляет арифметическое выражение
-    // требуется вычислить его значение, с учетом приоритета операций
-    private int Evaluator(string input) => throw new NotImplementedException();
+    // требуется сделать реверс входного массива
+    private void ReverseArray(int[] input) => throw new NotImplementedException();
 }
