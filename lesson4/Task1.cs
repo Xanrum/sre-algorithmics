@@ -4,7 +4,7 @@ using Xunit;
 public class Lesson4Task1
 {
     [Theory]
-    [InlineData("1+2", 3)]
+    [InlineData("2+2*2", 6)]
     private void CheckEvaluator(string input, int expected) =>
         Assert.Equal(expected, Evaluator(input));
 
