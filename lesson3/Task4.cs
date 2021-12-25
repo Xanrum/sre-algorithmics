@@ -16,24 +16,26 @@ public class Lesson3Task4
     // Длина массива до 1000.
     private int[] Inc(int[] input) {
         bool shift = false;
+        int[] output = new int[input.Length];
+        input.CopyTo(output, 0);
 
-        for (int i = input.Length-1; i >=0; i--) {
-            if (input[i] < 9) {
-                input[i]++;
+        for (int i = output.Length-1; i >=0; i--) {
+            if (output[i] < 9) {
+                output[i]++;
                 break;
             }
             else {
-                input[i] = 0;
+                output[i] = 0;
                 shift = true;
             }
 
             if (i == 0 && shift) {
-                int[] extendedInput = new int[input.Length + 1];
-                extendedInput[0] = 1;
-                return extendedInput;
+                int[] extendedOutput = new int[output.Length + 1];
+                extendedOutput[0] = 1;
+                return extendedOutput;
             }
         }
 
-        return input;
+        return output;
     }
 }
