@@ -9,6 +9,7 @@ public class Lesson3Task2
     [InlineData("1+2", 3)]
     [InlineData("1+21+3+94", 119)]
     [InlineData("1111+21+3+4+", 1139)] // все как на маковском калькуляторе, да
+    [InlineData("1+20", 21)]
     private void CheckSumator(string input, int expected) =>
         Assert.Equal(expected, Sumator(input));
 
