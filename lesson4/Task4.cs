@@ -14,5 +14,31 @@ public class Lesson4Task4
     // цифр 0..9
     // строка представляет арифметическое выражение
     // требуется вычислить его значение, с учетом приоритета операций
-    private int Evaluator(string input) => throw new NotImplementedException();
+    private int Evaluator(string input)
+    {
+        var result = 0;
+        var prevValue = 1;
+        var currentValue = 0;
+        foreach (var ch in input)
+        {
+            if (ch == '+')
+            {
+                result += currentValue * prevValue;
+                prevValue = 1;
+                currentValue = 0;
+                continue;
+            }
+
+            if (ch == '*')
+            {
+                prevValue *= currentValue;
+                currentValue = 0;
+                continue;
+            }
+
+            currentValue = currentValue * 10 + ch - '0';
+        }
+
+        return result + currentValue * prevValue;
+    }
 }

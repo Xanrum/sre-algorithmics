@@ -9,7 +9,32 @@ public class Lesson1Task5
     [InlineData(new[] { 1 }, 1)]
     private void CheckSearchMostFValue(int[] list, int expected) => Assert.Equal(expected, SearchMostFValue(list));
 
+    //Асимптотика
+    //Вычислительная О(N)
+    //Память О(1)
     // Дан отсортириованный массив. Найти наиболее встречающееся значение
     // Если таких значений несколько - найти первое такое значение
-    private int SearchMostFValue(int[] list) => throw new NotImplementedException();
+    private int SearchMostFValue(int[] list)
+    {
+        var recordCount = 0;
+        var recordValue = 0;
+        var currentCount = 1;
+        var currentValue = list[0];
+        for (var i = 1; i < list.Length; i++)
+        {
+            var value = list[i];
+            if (value != currentValue)
+            {
+                if (currentCount > recordCount) {
+                    recordCount = currentCount;
+                    recordValue = currentValue;
+                }
+                currentValue = value;
+                currentCount = 0;
+            }
+            currentCount++;
+        }
+        if (currentCount > recordValue) recordValue = currentValue;
+        return recordValue;
+    }
 }
