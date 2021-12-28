@@ -10,5 +10,37 @@ public class Lesson1Task4
         Assert.Equal(expected, Merge(listA, listB));
 
     // Есть два отсортированных листа. Надо их смержить в новый отсортированный лист
-    private int[] Merge(int[] listA, int[] listB) => throw new NotImplementedException();
+    // O(N)
+    private int[] Merge(int[] listA, int[] listB) {
+        var res = new int[listA.Length+listB.Length];
+        var (c,i,j) = (0,0,0);
+        while (i < listA.Length && j < listB.Length)
+        {
+            if (listA[i] < listB[j])
+            {
+
+                res[c] = listA[i];
+                ++i;
+            }
+            else 
+            {
+                res[c] = listB[j];
+                ++j;
+            } 
+            ++c;
+        }
+        while (i < listA.Length)
+        {  
+            res[c] = listA[i];  
+            ++i;  
+            ++c;
+        }
+        while (j < listB.Length)
+        {  
+            res[c] = listB[j];  
+            ++j;  
+            ++c;
+        }
+        return res;
+    }
 }
