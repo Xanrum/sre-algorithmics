@@ -5,7 +5,7 @@ using Xunit;
 public class Lesson4Task2
 {
     [Theory]
-    [InlineData(2, new[] {"(())", "()()"})]
+    [InlineData(4, new[] {"(())", "()()"})]
     private void CheckBracesGenerator(int input, string[] expected) =>
         Assert.Equal(expected, BracesGenerator(input).OrderBy(p => p));
 
