@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 public class Lesson3Task1
@@ -30,18 +31,27 @@ public class Lesson3Task1
             return false;
         }
 
-        do {
-            int length = input.Length;
+        List<char> braces = new();
 
-            input = input.Replace("()", "");
-            input = input.Replace("[]", "");
-            input = input.Replace("{}", "");
-
-            if (length == input.Length) {
-                break;
+        foreach (var brace in input)
+        {
+            if (brace == '(' || brace == '[' || brace == '{') {
+                braces.Add(brace);
+                continue;
             }
-        } while (true);
 
-        return (input.Length == 0) ? true : false;
+            if (braces.Count > 0) {
+                if (brace == ')' && braces[^1] == '(' ||
+                    brace == ']' && braces[^1] == '[' ||
+                    brace == '}' && braces[^1] == '{') {
+                        braces.RemoveAt(braces.Count - 1);
+                        continue;
+                    }
+            }
+
+            return false;
+        }
+
+        return true;
     }
 }
