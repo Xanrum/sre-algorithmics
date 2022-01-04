@@ -15,73 +15,43 @@ public class Lesson2Task3
     // Результат - отсортированный массив значений.
     // O( (a+b)^c )
     private int[] SearchMostFValue2(int[] listA, int[] listB) {
-        List<int> list = new List<int>();
-        Dictionary<int, int> dict = new Dictionary<int, int>();
+        int fCount = -1;
+        List<int> fValues = new() {};
+        int currentCount = 0;
+        int currentValue = listA[0] < listB[0] ? listA[0] : listB[0];
 
-        int count = 0;
-        int maxCount = 0;
-        int value = 0;
+        int value;
 
-        // -1, 0, 1, 1, 1, 3, 5, 5, 6, 6, 6, 7
-        foreach (int item in Merge(listA, listB)) {
-            if (count == 0) {
-                value = item;
+        void AddFValue() {
+            if (currentCount > fCount) {
+                fCount = currentCount;
+                fValues.Clear();
             }
 
-            if (value != item) {
-                if (count > maxCount) {
-                    maxCount = count;
-                }
-                dict.Add(value, count);
-                value = item;
-                count = 0;
-            }
-
-            count++;
-        }
-
-        foreach (var item in dict) {
-            if (item.Value == maxCount) {
-                list.Add(item.Key);
+            if (currentCount == fCount) {
+                fValues.Add(currentValue);
             }
         }
 
-        return list.ToArray();
-    }
-
-    private int[] Merge(int[] listA, int[] listB) {
-        int[] listC = new int[listA.Length + listB.Length];
-        int indexA = 0;
-        int indexB = 0;
-        int indexC = 0;
-
-        do {
-            if (indexA >= listA.Length) {
-                listC[indexC] = listB[indexB];
-                indexC++;
-                indexB++;
-                continue;
-            }
-
-            if (indexB >= listB.Length) {
-                listC[indexC] = listA[indexA];
-                indexC++;
-                indexA++;
-                continue;
-            }
-
-            if (listA[indexA] <= listB[indexB]) {
-                listC[indexC] = listA[indexA];
-                indexC++;
-                indexA++;
+        for (int a = 0, b = 0; a != listA.Length || b != listB.Length; currentCount++) {
+            if (b == listB.Length || a != listA.Length && listA[a] < listB[b]) {
+                value = listA[a];
+                a++;
             }
             else {
-                listC[indexC] = listB[indexB];
-                indexC++;
-                indexB++;
+                value = listB[b];
+                b++;
             }
-        } while (indexA < listA.Length || indexB < listB.Length);
 
-        return listC;
+            if (currentValue != value) {
+                AddFValue();
+                currentValue = value;
+                currentCount = 0;
+            }
+        }
+
+        AddFValue();
+
+        return fValues.ToArray();
     }
 }
