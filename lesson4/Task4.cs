@@ -18,20 +18,27 @@ public class Lesson4Task4
     // строка представляет арифметическое выражение
     // требуется вычислить его значение, с учетом приоритета операций
     private int Evaluator(string input) {
+        int number = 0;
         int multiplication = 1;
-        int result = 0;
+        int sum = 0;
 
-        string[] multiplications = input.Split('+');
-
-        foreach (string item in multiplications) {
-            foreach (string number in item.Split('*')) {
-                multiplication = multiplication * Int32.Parse(number);
+        foreach (char item in input) {
+            if (item == '*') {
+                multiplication = multiplication * number;
+                number = 0;
+                continue;
             }
 
-            result = result + multiplication;
-            multiplication = 1;
+            if (item == '+') {
+                sum = sum + (multiplication * number);
+                multiplication = 1;
+                number = 0;
+                continue;
+            }
+
+            number = number * 10 + (item - '0');
         }
 
-        return result;
+        return sum + number * multiplication;
     }
 }
