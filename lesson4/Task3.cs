@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.VisualBasic;
+using System.Linq;
 using Xunit;
 
 public class Lesson4Task3
@@ -13,27 +13,35 @@ public class Lesson4Task3
     [InlineData("A4B10CA3", "AAAABBBBBBBBBBCAAA")]
     [InlineData("(A2B)3Z", "AABAABAABZ")]
     [InlineData("((A2)2)2", "AAAAAAAA")]
+    [InlineData("((A2B)2)2", "AABAABAABAAB")]
     [InlineData("(A2B)10Z", "AABAABAABAABAABAABAABAABAABAABZ")]
     private void CheckEvaluator(string input, string expected) =>
         Assert.Equal(expected, ReversRLE(input));
 
     // распаковка RLE со скобками
     // поdторяющиеся блоки могут быть объеденены в скобки
+    
     private string ReversRLE(string input)
     {
-        char letter = default;
+        return Work(input).Item2;
+    }
+
+    private (int, string) Work(string input)
+    {
+        List<char> letters = new List<char>();
         List<char> result = new List<char>();
         int i = 0;
         while (i < input.Length)
         {
             if (char.IsLetter(input[i]))
             {
-                if (letter != default)
+                if (letters.Count != 0)
                 {
-                    result.Add(letter);
+                    result.AddRange(letters);
+                    letters.Clear();
                 }
 
-                letter = input[i];
+                letters.Add(input[i]);
                 i++;
             }
             else if (char.IsDigit(input[i]))
@@ -45,58 +53,40 @@ public class Lesson4Task3
                     count++;
                     i++;
                 }
+
                 var number = int.Parse(input.AsSpan(start, count));
-                AddLetters(result, letter, number);
-                letter = default;
+                AddLetters(result, letters, number);
+                letters.Clear();
             }
             else if (input[i] == '(')
             {
-                var count = 0;
                 i++;
-                var start = i;
-                while (input[i] != ')')
-                {
-                    count++;
-                    i++;
-                }
-
-                var res = ReversRLE(input.AsSpan(start, count).ToString());
-                var iterations = 1;
+                var (position, res) = Work(input.AsSpan(i, input.Length - i).ToString());
+                i += position;
                 i++;
-                if (char.IsDigit(input[i]))
-                {
-                    start = i;
-                    count = 0;
-                    while (i < input.Length && char.IsDigit(input[i]))
-                    {
-                        count++;
-                        i++;
-                    }
-                }
-                iterations = int.Parse(input.AsSpan(start, count));
-                for (int j = 0; j < iterations; j++)
-                {
-                    foreach (var letterOfRes in res)
-                    {
-                        AddLetters(result, letterOfRes, 1);
-                    }
-                }
-
-                i++;
+                Console.WriteLine(res);
+                letters = res.ToCharArray().ToList();
+            }
+            else if (input[i] == ')')
+            {
+                if (letters.Count != 0)
+                    result.AddRange(letters);
+                return (i, string.Join("", result));
             }
         }
 
         if (char.IsLetter(input[^1]))
             result.Add(input[^1]);
 
-        return string.Join("", result);
+        return (i, string.Join("", result));
     }
 
-    private void AddLetters(List<char> result, char letter, int number)
+
+    private void AddLetters(List<char> result, List<char> letters, int number)
     {
         for (int i = 0; i < number; i++)
         {
-            result.Add(letter);
+            result.AddRange(letters);
         }
     }
 }
