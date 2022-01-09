@@ -12,6 +12,7 @@ public class Lesson4Task3
     [InlineData("A4B3CA3", "AAAABBBCAAA")]
     [InlineData("A4B10CA3", "AAAABBBBBBBBBBCAAA")]
     [InlineData("(A2B)3Z", "AABAABAABZ")]
+    [InlineData("((A2)2)2", "AAAAAAAA")]
     [InlineData("(A2B)10Z", "AABAABAABAABAABAABAABAABAABAABZ")]
     private void CheckEvaluator(string input, string expected) =>
         Assert.Equal(expected, ReversRLE(input));
