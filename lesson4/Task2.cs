@@ -2,15 +2,32 @@ using System;
 using System.Linq;
 using Xunit;
 
-public class Lesson4Task2
-{
-    [Theory]
-    [InlineData(4, new[] {"(())", "()()"})]
-    private void CheckBracersGenerator(int input, string[] expected) =>
-        Assert.Equal(expected, BracersGenerator(input).OrderBy(p => p));
-
-    // Дано число N
-    // надо сгенериировать все возможные правильные скобочные выражения длиной N символов
-    // скобочные выражения состоят только из круглых скобок
-    private string[] BracersGenerator(int input) => throw new NotImplementedException();
-}
+// public class Lesson4Task2
+// {
+//     [Theory]
+//     [InlineData(4, new[] {"(())", "()()"})]
+//     [InlineData(2, new[] {"()"})]
+//     // [InlineData(6, new[] {"()(())", "(()())", "(())()", "()()()", "(())()", "()()()", "()(())", "()()()"})]
+//     [InlineData(6, new[] {"()(())", "(()())", "(())()", "()()()", "((()))"})]
+//     ((() (())) ()() ()))
+//     ((())) (()()) ()()() ())(()
+//     00
+//     01
+//     10
+//     11
+//     // [InlineData(8, new[] {"()()(())", "(())(())", "()()(())", "()(()())", "()((()))", "()(()())", "()(())()",   
+//     //                         "()(()())", "(()()())", "((())())", "(()()())", "(()(()))", "(()()())", "(()())()",
+//     //                         "()(())()", "(()())()", "((()))()", "(()())()", "(())()()", "(())(())", "(())()()", 
+//     //                         "()()()()", "(())()()", "()()()()", "()(())()", "()()()()", "()()(())", "()()()()"})]
+//     [InlineData(8, new[] {"()()(())", "(())(())", "()(()())", "()((()))", "()(())()",   
+//          "(()()())", "((())())", "(()(()))", "(()())()", "((()))()", "(())()()", "()()()()", "(((())))"})]
+//     
+//     
+//     private void CheckBracersGenerator(int input, string[] expected) =>
+//         Assert.Equal(expected, BracersGenerator(input).OrderBy(p => p));
+//
+//     // Дано число N
+//     // надо сгенериировать все возможные правильные скобочные выражения длиной N символов
+//     // скобочные выражения состоят только из круглых скобок
+//     private string[] BracersGenerator(int input) => throw new NotImplementedException();
+// }
