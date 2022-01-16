@@ -8,6 +8,7 @@ public class Lesson5Task2
     [InlineData(new []{1, 2, 4}, 3)]
     [InlineData(new []{4, 2, 1}, 3)]
     [InlineData(new []{6, 7, 2, 4, 3, 1}, 5)]
+    [InlineData(new []{5, 7, 2, 4, 3, 1}, 6)]
     
     private void CheckFindSkip(int[] input, int expected) =>
         Assert.Equal(expected, FindSkip(input));
@@ -18,13 +19,12 @@ public class Lesson5Task2
     // на всякий случай - еще раз, массив НЕ отсортирован
     private int FindSkip(int[] input)
     {
-        var result = new List<int>();
-        for (int i = 1; i < input.Length + 1; i++)
-            result.Add(i);
+        var sum = 0;
+        var expected = (input.Length + 1) * (input.Length + 2) / 2;
 
         foreach (var elem in input)
-            result.Remove(elem);
+            sum += elem;
 
-        return result[0];
+        return expected - sum;
     }
 }
