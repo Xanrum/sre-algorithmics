@@ -68,8 +68,8 @@ public class Lesson4Task2
     class Element
     {
         public string Str { get; set; }
-        public int openCount { get; set; } = 0;
-        public int closeCount { get; set; } = 0;
+        public int openCount { get; set; }
+        public int closeCount { get; set; }
     }
 
     private bool IsValid(Element toCheck, int input)
