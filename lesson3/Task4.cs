@@ -20,25 +20,28 @@ public class Lesson3Task4
     private int[] Inc(int[] input)
     {
         var f = 1;
+        var result = new int[input.Length];
         for (var i = input.Length - 1; i >= 0; i--)
         {
             if (input[i] == 9)
-                input[i] = 0;
+                result[i] = 0;
 
             else
             {
-                input[i]++;
+                result[i] = input[i] + 1;
                 f = 0;
+                for (var j = i - 1; j >= 0; j--)
+                    result[j] = input[j];
                 break;
             }
         }
-
+        
         if (f == 1)
         {
-            var result = new int [input.Length + 1];
+            result = new int [input.Length + 1];
             result[0] = 1;
             return result;
         }
-        return input;
+        return result;
     }
 }
