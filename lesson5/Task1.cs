@@ -3,14 +3,13 @@ using Xunit;
 
 public class Lesson5Task1
 {
-    //[Theory]
-    //[InlineData(new []{0, 1, 2, 3, 4}, 4, "0,4;1,3")]
+    [Theory]
+    [InlineData(new []{1, 2, 3, 4, 5}, 6)]
     
-    private void CheckSFindSum(int[] input, int k, string expected) =>
-        Assert.Equal(expected, FindSum(input, k));
+    private void CheckFindSumMinMax(int[] input, int expected) =>
+        Assert.Equal(expected, FindSumMinMax(input));
 
-    // Дан отсортированный массив и число K
-    // требуется найти два индекса по которым сумма значений равна К
-    // вывести в виде массива массивов из двух значений - в значениях два индкеса, сначала идет меньший индексы
-    private string FindSum(int[] input, int k) => throw new NotImplementedException();
+    // Дан массив чисел
+    // надо найти сумму минимального и максимального числа
+    private int FindSumMinMax(int[] input) => throw new NotImplementedException();
 }
