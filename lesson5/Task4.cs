@@ -12,5 +12,11 @@ public class Lesson5Task4
     // Дан отсортированный массив и число K
     // требуется найти два индекса по которым сумма значений равна К
     // вывести в виде массива массивов из двух значений - в значениях два индкеса, сначала идет меньший индексы
-    private string FindSum(int[] input, int k) => throw new NotImplementedException();
+    private string FindSum(int[] input, int k)
+    {
+        var result = "";
+        var start = 0;
+        var end = input[^1];
+        return result;
+    }
 }

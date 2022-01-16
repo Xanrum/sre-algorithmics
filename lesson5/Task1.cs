@@ -11,5 +11,16 @@ public class Lesson5Task1
 
     // Дан массив чисел
     // надо найти сумму минимального и максимального числа
-    private int FindSumMinMax(int[] input) => throw new NotImplementedException();
+    private int FindSumMinMax(int[] input)
+    {
+        var min = input[0];
+        var max = input[0];
+        foreach (var i in input)
+        {
+            if (i < min) min = i;
+            if (i > max) max = i;
+        }
+
+        return min + max;
+    }
 }

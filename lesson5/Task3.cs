@@ -17,5 +17,20 @@ public class Lesson5Task3
     // все вложенные массивы одинаковой длины
     // первое число каждого массива - больше последнего числа предыдущего массива
     // дано число, надо найти сумму индексов местоположения этого числа
-    private int FindSkip(int[][] input, int x) => throw new NotImplementedException();
+    private int FindSkip(int[][] input, int x)
+    {
+        var leftBound = 0;
+        var w = input.Length;
+        var h = input[0].Length;
+        var rightBound = w * h - 1;
+        while (true)
+        {
+            var center = leftBound + (rightBound - leftBound) / 2;
+            var centerValue = input[center/h][center%w];
+            if (centerValue == x) return center/h + center%w;
+            if (leftBound == rightBound) return -1;
+            if (centerValue < x) leftBound = center + 1;
+            if (centerValue > x) rightBound = center;
+        }
+    }
 }
