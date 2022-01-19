@@ -3,6 +3,7 @@ using Xunit;
 
 public class Lesson5Task1
 {
+    // O(n) - по времени, O(1) - по памяти
     [Theory]
     [InlineData(new []{1, 2, 3, 4, 5}, 6)]
     [InlineData(new []{2, 1, 5, 4, 3}, 6)]

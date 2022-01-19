@@ -5,6 +5,7 @@ using Xunit;
 
 public class Lesson5Task3
 {
+    //O(logN) - по времени, О(1) - по памяти
     [Theory]
     [InlineData(new[]
     {
