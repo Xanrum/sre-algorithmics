@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Xunit;
 
 public class Lesson1Task4
@@ -11,36 +12,49 @@ public class Lesson1Task4
 
     // Есть два отсортированных листа. Надо их смержить в новый отсортированный лист
     // O(N)
-    private int[] Merge(int[] listA, int[] listB) {
-        var res = new int[listA.Length+listB.Length];
-        var (c,i,j) = (0,0,0);
+    private int[] Merge(int[] listA, int[] listB)
+    {
+        var res = new int[listA.Length + listB.Length];
+        var (c, i, j) = (0, 0, 0);
         while (i < listA.Length && j < listB.Length)
         {
             if (listA[i] < listB[j])
             {
-
                 res[c] = listA[i];
                 ++i;
             }
-            else 
+            else
             {
                 res[c] = listB[j];
                 ++j;
-            } 
+            }
+
             ++c;
         }
+
         while (i < listA.Length)
-        {  
-            res[c] = listA[i];  
-            ++i;  
+        {
+            res[c] = listA[i];
+            ++i;
             ++c;
         }
+
         while (j < listB.Length)
-        {  
-            res[c] = listB[j];  
-            ++j;  
+        {
+            res[c] = listB[j];
+            ++j;
             ++c;
         }
+
         return res;
+    }
+
+    private int[] MergeExt(int[] listA, int[] listB)
+    {
+        var a = new int[listA.Length + listB.Length].ToList();
+        a.AddRange(listA);
+        a.AddRange(listB);
+        a.Sort();
+        return a.ToArray();
     }
 }

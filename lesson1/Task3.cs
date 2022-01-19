@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Xunit;
 
 public class Lesson1Task3
@@ -29,4 +30,6 @@ public class Lesson1Task3
         }
         return -1;
     }
+
+    private int BinarySearchExt(int[] list, int value) => list.ToList().BinarySearch(value);
 }

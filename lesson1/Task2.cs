@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Xunit;
 
 public class Lesson1Task2
@@ -12,4 +13,5 @@ public class Lesson1Task2
     // функция находящая минимальное значение в отсортированном листе
     // O(1)
     private int SearchMin(int[] list) => list[0];
+    private int SearchMinExt(int[] list) => list.First();
 }

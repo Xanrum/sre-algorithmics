@@ -9,7 +9,7 @@ public class Lesson5Task3
     private void CheckFindSkip(string[] rawInput, int x, int expected)
     {
         var input = rawInput.Select(p => p.Split(',').Select(int.Parse).ToArray()).ToArray();
-        Assert.Equal(expected, FindSkip(input, x));
+        Assert.Equal(expected, FindSkipExt(input, x));
     }
 
     // Дан массив массивов чисел
@@ -17,5 +17,18 @@ public class Lesson5Task3
     // все вложенные массивы одинаковой длины
     // первое число каждого массива - больше последнего числа предыдущего массива
     // дано число, надо найти сумму индексов местоположения этого числа
-    private int FindSkip(int[][] input, int x) => throw new NotImplementedException();
+    private int FindSkip(int[][] input, int x)
+    {
+        // Очевидно в лоб херня но просто попробовал сначала так, перепишу на бинарный поиск в двумерном массиве
+        var res = 0;
+        for (int i = 0; i < input.Length; i++)
+        {
+            for (int j = 0; j < input[i].Length; j++)
+            {
+                if (input[i][j] == x) return i + j;
+            }
+        }
+
+        return res;
+    }
 }
