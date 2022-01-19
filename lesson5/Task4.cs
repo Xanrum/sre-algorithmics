@@ -6,6 +6,7 @@ public class Lesson5Task4
 {
     //O(n) - по времени и по памяти
     [Theory]
+    [InlineData(new[] {1, 1, 1}, 2, "0,2;0,1;1,2")]
     [InlineData(new[] {-8, -5, 0, 1, 4, 8, 9, 10, 15, 22, 30}, 10, "1,8;2,7;3,6")]
     [InlineData(new[] {-8, -5, 0, 0, 1, 4, 8, 9, 10, 15, 19, 19, 19, 22, 30}, 11, "0,12;0,11;0,10;4,8")]
     [InlineData(new[] {-8, -5, 0, 0, 1, 4, 8, 9, 10, 15, 22, 30}, 10, "1,9;2,8;3,8;4,7")]
@@ -32,7 +33,7 @@ public class Lesson5Task4
             if (i >= j)
                 break;
 
-            for (int m = j; input[m] == pair; m--)
+            for (int m = j; input[m] == pair && m > i; m--)
                 result.Add($"{i},{m}");
         }
 
