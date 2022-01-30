@@ -8,6 +8,9 @@ public class Lesson1Task1
     [InlineData(1, -2, -1)]
     private void CheckSum(int a, int b, int expected) => Assert.Equal(expected, Sum(a, b));
 
-    //функция складывает два целых числа
-    private int Sum(int a, int b) => throw new NotImplementedException();
+    // Функция складывает два целых числа.
+    // O(1)
+    private int Sum(int a, int b) {
+        return a + b;
+    }
 }
